@@ -40,7 +40,7 @@ jobs:
           BASE_BRANCH="${{ github.event.repository.default_branch }}"
           git fetch origin $BASE_BRANCH
           if git ls-tree -r origin/$BASE_BRANCH --name-only | grep -q 'README_DE\.md$'; then
-            if ! git diff --exit-code origin/$BASE_BRANCH...HEAD -- '**/README_DE.md'; then
+            if ! git diff --exit-code origin/$BASE_BRANCH..HEAD -- '**/README_DE.md'; then
               echo "⚠ ERROR: Modification of README_DE.md is not allowed."
               exit 1
             fi
